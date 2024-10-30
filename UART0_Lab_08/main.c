@@ -8,13 +8,13 @@
 
 void UART0_Init(void) {
     // Enable UART0 and GPIO Port A
-    SYSCTL_RCGCUART_R |= (1U << 0);   // Enable UART0
+    SYSCTL_RCGCUART_R |= (1U << 0);   // Enabling UART0
     SYSCTL_RCGCGPIO_R |= (1U << 0);    // Enable GPIO Port A
 
     // Configure PA0 and PA1 for UART
     GPIO_PORTA_AFSEL_R |= (1U << 0) | (1U << 1); // Set PA0 and PA1 as alternate function
     GPIO_PORTA_PCTL_R = (GPIO_PORTA_PCTL_R & 0xFFFFFF00) | 0x00000011; // Set PA0 and PA1 for UART
-    GPIO_PORTA_DEN_R |= (1U << 0) | (1U << 1); // Enable digital function on PA0 and PA1
+    GPIO_PORTA_DEN_R |= (1U << 0) | (1U << 1); // Enabling digital function on PA0 and PA1
 
     // Configure UART0 for 9600 baud rate, 8-N-1
     UART0_CTL_R &= ~UART_CTL_UARTEN; // Disable UART
